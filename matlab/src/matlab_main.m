@@ -18,5 +18,5 @@ spm_jobman('run',matlabbatch);
 % Use SPM functions directly
 spm_image('Display',inp.img_nii);
 spm_orthviews('Caption',1,sprintf('Parameter value is %f',param));
-spm_print(fullfile(inp.out_dir,'batchfigure.pdf','Graphics','pdf'));
+spm_print(fullfile(inp.out_dir,'funcfigure.pdf','Graphics','pdf'));
 
