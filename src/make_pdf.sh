@@ -46,7 +46,7 @@ convert \
     page1.png
 
 # Combine with saved images from Matlab/SPM to make a single PDF
-convert page1.png batchfigure.pdf funcfigure.pdf demo.pdf
+convert page1.png batchfigure*.pdf funcfigure*.pdf demo.pdf
 
 # Clean up
 rm page1.png batchfigure_*.pdf funcfigure_*.pdf
