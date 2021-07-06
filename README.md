@@ -5,7 +5,7 @@ container. Freesurfer's Freeview is also included here, as it's very handy for c
 the PDF QA report.
 
 See https://github.com/baxpr/demo-singularity-matlab-fsl for a lot of detailed info about
-putting Matlab code into singularity containers.
+putting Matlab code into singularity containers. This example uses the same structure.
 
 SPM requires jumping an extra hurdle at the compilation step - we use a modified version
 of SPM's own compiler function `spm_make_standalone.m`, found at 
