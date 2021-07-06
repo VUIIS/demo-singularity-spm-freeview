@@ -11,7 +11,8 @@ A licensed Matlab installation is required to compile the Matlab code, but is no
 to run the compiled executable in the container.
 
 SPM12 (https://www.fil.ion.ucl.ac.uk/spm/software/spm12/) is not in this repository and must
-be installed separately. Edit `matlab/compile_matlab.sh` to point to it.
+be installed separately on the compilation host. Edit `matlab/compile_matlab.sh` to point 
+to it.
 
 SPM requires jumping an extra hurdle at the compilation step - we use a modified version
 of SPM's own compiler function `spm_make_standalone.m`, found at 
