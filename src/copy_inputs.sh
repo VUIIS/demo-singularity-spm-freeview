@@ -12,3 +12,6 @@ echo Running $(basename "${BASH_SOURCE}")
 # working in its own private directory.
 cp "${img_niigz}" "${out_dir}"/img.nii.gz
 cp "${mask_niigz}" "${out_dir}"/mask.nii.gz
+
+# Unzip the images for SPM
+gunzip "${out_dir}"/img.nii.gz "${out_dir}"/mask.nii.gz

@@ -9,8 +9,8 @@
 echo Running $(basename "${BASH_SOURCE}")
 
 # Remove copied inputs that we don't need anymore
-rm "${out_dir}"/img.nii.gz
-rm "${out_dir}"/mask.nii.gz
+rm "${out_dir}"/img.nii
+rm "${out_dir}"/mask.nii
 
 # The only output of this pipeline is the PDF.
 mkdir "${out_dir}"/PDF

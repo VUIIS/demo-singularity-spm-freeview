@@ -13,7 +13,7 @@ P = inputParser;
 
 % Our example code takes a single 3D nifti T1 as input. This argument
 % is expected to contain the fully qualified path and filename.
-addOptional(P,'image_niigz','')
+addOptional(P,'img_nii','')
 
 % We also take a single numerical parameter. Note that when arguments are
 % passed to compiled Matlab via command line, they all come as strings; so
@@ -24,7 +24,7 @@ addOptional(P,'parameter_val','42');
 % session, and scan labels from XNAT available in case we want them. Often
 % the only need for these is to label the QA PDF. Here we accept a string
 % to use as a label.
-addOptional(P,'label_string','UNKNOWN SCAN');
+addOptional(P,'label_info','UNKNOWN SCAN');
 
 % Finally, we need to know where to store the outputs.
 addOptional(P,'out_dir','/OUTPUTS');

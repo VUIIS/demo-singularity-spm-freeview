@@ -10,7 +10,7 @@ thedate=$(date)
 cd ${out_dir}
 
 # Find center of mass of the mask image, using a custom matlab function
-run_spm12.sh ${MATLAB_RUNTIME} function ctr_of_mass mask.nii.gz 0 yes com.txt
+run_spm12.sh ${MATLAB_RUNTIME} function ctr_of_mass mask.nii 0 yes com.txt
 com=$(cat com.txt)
 rm com.txt
 XYZ=(${com// / })
@@ -21,8 +21,8 @@ for sl in -040 -030 -020 -010 000 010 020 030 040 050 060; do
     Z=$(echo "${XYZ[2]} + ${sl}" | bc -l)
 
 	freeview \
-	  -v img.nii.gz \
-	  -v mask.nii.gz:colormap=lut:outline=yes \
+	  -v img.nii \
+	  -v mask.nii:colormap=lut:outline=yes \
 	  -viewsize 800 800 --layout 1 --zoom 1.2 --viewport axial \
 	  -ras ${XYZ[0]} ${XYZ[1]} ${Z} \
 	  -ss slice_${sl}.png
@@ -49,4 +49,4 @@ convert \
 convert page1.png batchfigure.pdf funcfigure.pdf demo.pdf
 
 # Clean up
-rm page1.png batchfigure.pdf funcfigure.pdf
+rm page1.png batchfigure_*.pdf funcfigure_*.pdf

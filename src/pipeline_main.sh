@@ -20,7 +20,7 @@ preprocessing.sh
 # line arguments, although we could use matlab's getenv to pull them from the
 # environment instead if desired.
 run_spm12.sh "${MATLAB_RUNTIME}" \
-    img_niigz "${out_dir}"/img.nii.gz \
+    img_nii "${out_dir}"/img.nii \
     parameter_val "${parameter_val}" \
     label_info "${label_info}" \
     out_dir "${out_dir}"
