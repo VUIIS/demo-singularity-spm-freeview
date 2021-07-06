@@ -145,5 +145,5 @@ From: ubuntu:20.04
 
   # We just call our entrypoint, passing along all the command line arguments 
   # that were given at the singularity run command line.
-  xwrapper.sh "$@"
+  pipeline_entrypoint.sh "$@"
 
