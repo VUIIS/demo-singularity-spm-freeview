@@ -10,3 +10,4 @@ Best practice is to store your license file on the host that will run the contai
 bind it to the container at runtime - NOT to include your own license file in the 
 container itself.
 
+ 
