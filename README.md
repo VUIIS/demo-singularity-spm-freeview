@@ -23,6 +23,13 @@ to SPM12, everything in the `matlab/src` directory is included in the path at co
 If Matlab toolboxes are used, they will need to be added to the list of included toolboxes
 in `matlab/spm_make_standalone_local.m`.
 
+The compiled Matlab executable is stored on github using git LFS. A regular git clone will
+download a pointer text file instead of the executable binary. The result of building a 
+container from that will be a cryptic error message - so, compile it yourself. Or, if 
+storing on github, download it manually and replace the pointer text file, or include this 
+step in the Singularity file if helpful - example here:
+https://github.com/baxpr/gf-fmri/blob/master/Singularity.v1.3.4#L65
+
 Freesurfer requires a license to run:
 https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall#License
 Best practice is to store your license file on the host that will run the container, and
