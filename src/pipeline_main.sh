@@ -19,7 +19,7 @@ preprocessing.sh
 # Then the matlab. It is written so that we must pass the inputs as command
 # line arguments, although we could use matlab's getenv to pull them from the
 # environment instead if desired.
-run_spm12.sh "${MATLAB_RUNTIME}" \
+run_spm12.sh "${MATLAB_RUNTIME}" function matlab_entrypoint \
     img_nii "${out_dir}"/img.nii \
     parameter_val "${parameter_val}" \
     label_info "${label_info}" \
