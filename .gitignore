@@ -6,3 +6,4 @@ external
 *.sif
 *~
 .DS_Store
+local*
