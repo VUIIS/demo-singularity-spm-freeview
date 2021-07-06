@@ -17,6 +17,7 @@ singularity run --cleanenv --contain \
     --bind INPUTS:/tmp \
     --bind INPUTS:/INPUTS \
     --bind OUTPUTS:/OUTPUTS \
+    --bind freesurfer_license.txt:/usr/local/freesurfer/license.txt \
     demo.simg \
     --img_niigz /INPUTS/t1.nii.gz \
     --mask_niigz /INPUTS/seg.nii.gz \
