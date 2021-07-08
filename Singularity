@@ -84,7 +84,7 @@ From: ubuntu:20.04
   # now is the only time the container is writeable. The run_spm12.sh command
   # can be used with SPM12's 'function' argument to run any command that was
   # available in the Matlab path at compile time.
-  /opt/pipeline/bin/run_spm12.sh ${runtime_location} function exit
+  /opt/pipeline/matlab/bin/run_spm12.sh ${runtime_location} function exit
 
   # Freesurfer requires this graphics library and encodings package
   apt install -y libglu1-mesa language-pack-en
