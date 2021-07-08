@@ -28,7 +28,7 @@ download a pointer text file instead of the executable binary. The result of bui
 container from that will be a cryptic error message - so, compile it yourself. Or, if 
 storing on github, download it manually and replace the pointer text file, or include this 
 step in the Singularity file if helpful - example here:
-https://github.com/baxpr/gf-fmri/blob/master/Singularity.v1.3.4#L65
+https://github.com/baxpr/gf-fmri/blob/47b0552/Singularity.v1.3.4#L65
 
 Freesurfer requires a license to run:
 https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall#License
