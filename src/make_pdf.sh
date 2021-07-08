@@ -19,6 +19,7 @@ XYZ=(${com// / })
 for sl in -040 -030 -020 -010 000 010 020 030 040 050 060; do
 
     Z=$(echo "${XYZ[2]} + ${sl}" | bc -l)
+    echo "Slice ${sl} at ${XYZ[@]}"
 
 	freeview \
 	  -v img.nii \

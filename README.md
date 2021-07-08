@@ -2,7 +2,8 @@
 
 SPM12-based pipelines require a little extra work to get them compiled and working in a
 container. Freesurfer's Freeview is also included here, as it's very handy for creating
-the PDF QA report.
+the PDF QA report. This example shows three different ways of creating image displays for
+the QA PDF.
 
 See https://github.com/baxpr/demo-singularity-matlab-fsl for a lot of detailed info about
 putting Matlab code into singularity containers. This example uses the same structure.
