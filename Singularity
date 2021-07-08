@@ -32,6 +32,8 @@ From: ubuntu:20.04
   matlab                       /opt/pipeline
   README.md                    /opt/pipeline
   ImageMagick-policy.xml       /opt
+  SetUpFreeSurfer.sh           /opt
+  FreeSurferEnv.sh             /opt
   
   # If we have local copies of these packages, we can use them instead of downloading
   external/freesurfer-linux-centos7_x86_64-7.1.1.tar.gz   /opt
@@ -98,11 +100,16 @@ From: ubuntu:20.04
   tar -zxf /opt/${fsfile} -C /usr/local freesurfer/bin/freeview
   tar -zxf /opt/${fsfile} -C /usr/local freesurfer/bin/qt.conf
   tar -zxf /opt/${fsfile} -C /usr/local freesurfer/build-stamp.txt
-  tar -zxf /opt/${fsfile} -C /usr/local freesurfer/SetUpFreeSurfer.sh
-  tar -zxf /opt/${fsfile} -C /usr/local freesurfer/FreeSurferEnv.sh
   tar -zxf /opt/${fsfile} -C /usr/local freesurfer/lib/qt
   tar -zxf /opt/${fsfile} -C /usr/local freesurfer/lib/vtk
   rm /opt/${fsfile}
+  
+  # We use custom Freesurfer setup scripts to avoid some shell issues with bash
+  # vs sh and . vs source. The difference is that we've changed 'source' to '.'
+  # so that these are compatible with sh - when we run the setup in the 
+  # %environment section, only sh is available.
+  mv /opt/SetUpFreeSurfer.sh /usr/local/freesurfer 
+  mv /opt/FreeSurferEnv.sh /usr/local/freesurfer 
   
   # Freesurfer needs a machine id here. If we don't create one, we'll hear about it
   # at run time.
