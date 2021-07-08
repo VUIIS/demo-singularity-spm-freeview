@@ -7,7 +7,6 @@ From: ubuntu:20.04
   Info and usage: /opt/pipeline/README.md
 
 
-
 %setup
 
   # Create an installation directory for the codebase. We can often finagle this
@@ -54,25 +53,22 @@ From: ubuntu:20.04
   # Misc tools needed for basic operations
   apt install -y wget unzip zip bc
   
-  # Ghostscript and ImageMagick are very handy for making PDF QA reports.
+  # ImageMagick and Ghostscript are very handy for making PDF QA reports.
   apt install -y ghostscript imagemagick
   
+  # ImageMagick security policy needs to be more permissive
+  # https://www.kb.cert.org/vuls/id/332928
+  mv /opt/ImageMagick-policy.xml /etc/ImageMagick-6/policy.xml
+
   # xvfb is used to perform graphics operations "headless" to create figures,
   # images, etc. This pipeline will be run entirely on the virtual display,
   # although it's also possible to do X operations piecemeal/as needed.
   apt install -y xvfb
 
   # Matlab Runtime requires this Java runtime
-  apt install -y openjdk-8-jre
-  
-  # Freeview requires this graphics library
-  apt install -y libglu1-mesa
-  
-  # We need to make the ImageMagick security policy more permissive
-  # https://www.kb.cert.org/vuls/id/332928
-  mv /opt/ImageMagick-policy.xml /etc/ImageMagick-6/policy.xml
+  apt install -y openjdk-8-jre  
 
-  # Install the Matlab Compiled Runtime. Uncomment the wget command to download 
+  # Matlab Compiled Runtime installation. Uncomment the wget command to download 
   # the install package instead of using a local copy. The installed version of 
   # the runtime must match the Matlab version that was used to compile the code. 
   # Each version of the runtime has its own download URL and installed location:
@@ -84,13 +80,16 @@ From: ubuntu:20.04
   /opt/mcr_installer/install -mode silent -agreeToLicense yes
   rm -r /opt/mcr_installer /opt/mcr_installer.zip
 
-  # We need to run the matlab executable now to extract the CTF archive, because
+  # Matlab executable must be run now to extract the CTF archive, because
   # now is the only time the container is writeable. The run_spm12.sh command
   # can be used with SPM12's 'function' argument to run any command that was
   # available in the Matlab path at compile time.
   /opt/pipeline/bin/run_spm12.sh ${runtime_location} function exit
 
-  # Install Freesurfer. We are only installing freeview, so we only extract those 
+  # Freesurfer requires this graphics library and encodings package
+  apt install -y libglu1-mesa language-pack-en
+
+  # Freesurfer. We are only installing freeview, so we only extract those 
   # few files that are required for it. Uncomment the wget command to download 
   # the install package instead of using a local copy.
   # https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall
@@ -105,7 +104,7 @@ From: ubuntu:20.04
   tar -zxf /opt/${fsfile} -C /usr/local freesurfer/lib/vtk
   rm /opt/${fsfile}
   
-  # Freeview needs a machine id here. If we don't create one, we'll hear about it
+  # Freesurfer needs a machine id here. If we don't create one, we'll hear about it
   # at run time.
   dbus-uuidgen > /etc/machine-id
 
@@ -129,12 +128,12 @@ From: ubuntu:20.04
   export MATLAB_SHELL=/usr/bin/bash
   export MATLAB_RUNTIME=/usr/local/MATLAB/MATLAB_Runtime/v97
   
-  # Freesurfer
-  # We set FREESURFER_HOME here, but the rest of Freesurfer setup will have to 
-  # be done at run time in the pipeline code:
-  #     . $FREESURFER_HOME/SetUpFreeSurfer.sh  
+  # Freesurfer.
+  # The XDG_RUNTIME_DIR setting avoids a warning message.    
   export FREESURFER_HOME=/usr/local/freesurfer
-  
+  . $FREESURFER_HOME/SetUpFreeSurfer.sh
+  export XDG_RUNTIME_DIR=/tmp
+    
   # Path
   # We add the src directory, which contains shell scripts etc; and the 
   # matlab/bin directory, which contains the compiled Matlab binary.
