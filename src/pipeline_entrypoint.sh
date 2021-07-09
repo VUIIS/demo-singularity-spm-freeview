@@ -36,7 +36,7 @@ do
         --parameter_val)
             # Also take a numeric value as input to demonstrate how to handle
             # the way these come through as strings to a matlab executable
-            export diameter_mm="$2"; shift; shift ;;
+            export parameter_val="$2"; shift; shift ;;
 
         --label_info)
             # Info from from XNAT that we will use to label the QA PDF
