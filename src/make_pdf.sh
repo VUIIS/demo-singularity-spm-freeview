@@ -34,7 +34,7 @@ done
 # in the right order on the page
 montage -mode concatenate slice_-0{4,3,2,1}*.png slice_0*.png \
     -tile 3x4 -quality 100 -background black -gravity center \
-    -border 20 -bordercolor black page_fmri.png
+    -border 20 -bordercolor black page1.png
 
 # Rescale to fit the page, and add annotations
 convert \
