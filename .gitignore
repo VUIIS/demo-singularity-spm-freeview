@@ -1,0 +1,12 @@
+INPUTS*
+OUTPUTS*
+external
+*.asv
+*.simg
+*.sif
+*~
+.DS_Store
+local*
+freesurfer_license.txt
+matlab/bin/spm12_mcr
+matlab/bin/spm12.ctf
